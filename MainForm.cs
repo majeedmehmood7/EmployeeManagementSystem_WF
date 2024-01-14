@@ -48,14 +48,17 @@ namespace EmployeeManagementSystem
         {
             dashboard1.Visible = false;
             employee1.Visible = true;
-            salary1.Visible =false;
-       }
+            salary1.Visible = false;
+            manager1.Visible = false;
+
+        }
 
         private void Salary_btn_Click(object sender, EventArgs e)
         {
             dashboard1.Visible = false;
             employee1.Visible = false;
             salary1.Visible = true;
+            manager1.Visible = false;
         }
 
         private void greent_user_Click(object sender, EventArgs e)
@@ -68,6 +71,20 @@ namespace EmployeeManagementSystem
             dashboard1.Visible = true;
             employee1.Visible = false;
             salary1.Visible = false;
+            manager1.Visible = false;
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+           
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dashboard1.Visible = false;
+            employee1.Visible = false;
+            salary1.Visible = false;
+            manager1.Visible = true;
         }
     }
 }

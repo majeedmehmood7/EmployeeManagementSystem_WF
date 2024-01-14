@@ -14,7 +14,11 @@ namespace EmployeeManagementSystem
 {
     public partial class Form1 : Form
     {
-        SqlConnection connect = new SqlConnection(@"Data Source=DESKTOP-9C6UBMA;Initial Catalog=employee;Integrated Security=True;Encrypt=False;");
+        //SqlConnection connect = new SqlConnection(@"Data Source=DESKTOP-9C6UBMA;Initial Catalog=employee;Integrated Security=True;Encrypt=False;");
+     
+        Myconnection connect = new Myconnection();
+
+
         public Form1()
         {
             InitializeComponent();
@@ -49,6 +53,8 @@ namespace EmployeeManagementSystem
 
         private void Login_btn_Click(object sender, EventArgs e)
         {
+               
+
             if (login_username.Text == "" || Login_password.Text == "")
             {
                 MessageBox.Show("Please fill all blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -59,36 +65,70 @@ namespace EmployeeManagementSystem
                 {
                     try
                     {
-                        connect.Open();
-                        string InsertDate = "SELECT * FROM users WHERE username = @username AND password = @password";
+                        //connect.Open();
+                        //string InsertDate = "SELECT * FROM users WHERE username = @username AND password = @password";
 
-                        using (SqlCommand cmd = new SqlCommand(InsertDate, connect))
+                        //using (SqlCommand cmd = new SqlCommand(InsertDate, connect))
+                        //{
+                        //    cmd.Parameters.AddWithValue("@username", login_username.Text.Trim());
+                        //    cmd.Parameters.AddWithValue("@password", Login_password.Text.Trim());
+
+                        //    using (SqlDataAdapter adp = new SqlDataAdapter(cmd))
+                        //    {
+                        //        DataTable table = new DataTable();
+                        //        adp.Fill(table);
+
+                        //        if (table.Rows.Count >= 1)
+                        //        {
+                        //            MessageBox.Show("Login successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        //            MainForm mainform = new MainForm();
+                        //            mainform.Show();
+                        //            this.Hide();
+                        //        }
+                        //        else
+                        //        {
+                        //            MessageBox.Show("Login failed!", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        //        }
+                        //    }
+                        //}
+
+                        using (connect)
                         {
-                            cmd.Parameters.AddWithValue("@username", login_username.Text.Trim());
-                            cmd.Parameters.AddWithValue("@password", Login_password.Text.Trim());
 
-                            using (SqlDataAdapter adp = new SqlDataAdapter(cmd))
+                            SqlCommand cmd = new SqlCommand("sp_role_login1", connect);
+                            cmd.CommandType = CommandType.StoredProcedure;
+                            connect.Open();
+                            cmd.Parameters.AddWithValue("@uname", login_username.Text);
+                            cmd.Parameters.AddWithValue("upass", Login_password.Text);
+                            SqlDataReader rd = cmd.ExecuteReader();
+                            if (rd.HasRows)
                             {
-                                DataTable table = new DataTable();
-                                adp.Fill(table);
-
-                                if (table.Rows.Count >= 1)
+                                rd.Read();
+                                if (rd[4].ToString() == "Admin")
                                 {
-                                    MessageBox.Show("Login successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                                    MainForm mainform = new MainForm();
-                                    mainform.Show();
-                                    this.Hide();
+                                    Myconnection.type = "A";
+                                     
                                 }
-                                else
+                                else if (rd[4].ToString()== "User")
                                 {
-                                    MessageBox.Show("Login failed!", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    Myconnection.type = "U";
                                 }
+
+                                MainForm mainform = new MainForm();
+                                mainform.Show();
+                                this.Hide();
                             }
+                            else
+                            {
+                                MessageBox.Show("Error");
+                            }
+
                         }
 
-
                     }
+
+                    
                     catch (Exception ex)
                     {
                         MessageBox.Show("Error: " + ex.Message, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);

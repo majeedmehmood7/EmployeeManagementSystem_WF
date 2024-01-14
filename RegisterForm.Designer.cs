@@ -43,6 +43,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.signup_loginBtn = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.Signup_Status = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -75,7 +77,7 @@
             this.signup_btn.BackColor = System.Drawing.Color.Navy;
             this.signup_btn.Font = new System.Drawing.Font("Microsoft YaHei UI", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.signup_btn.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.signup_btn.Location = new System.Drawing.Point(322, 325);
+            this.signup_btn.Location = new System.Drawing.Point(325, 377);
             this.signup_btn.Name = "signup_btn";
             this.signup_btn.Size = new System.Drawing.Size(229, 46);
             this.signup_btn.TabIndex = 20;
@@ -88,7 +90,7 @@
             this.Signup_showpassword.AutoSize = true;
             this.Signup_showpassword.Font = new System.Drawing.Font("Microsoft YaHei UI Light", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Signup_showpassword.ForeColor = System.Drawing.Color.Black;
-            this.Signup_showpassword.Location = new System.Drawing.Point(423, 296);
+            this.Signup_showpassword.Location = new System.Drawing.Point(426, 273);
             this.Signup_showpassword.Name = "Signup_showpassword";
             this.Signup_showpassword.Size = new System.Drawing.Size(128, 23);
             this.Signup_showpassword.TabIndex = 19;
@@ -98,7 +100,7 @@
             // 
             // signup_password
             // 
-            this.signup_password.Location = new System.Drawing.Point(322, 261);
+            this.signup_password.Location = new System.Drawing.Point(322, 245);
             this.signup_password.Name = "signup_password";
             this.signup_password.PasswordChar = '*';
             this.signup_password.Size = new System.Drawing.Size(229, 22);
@@ -109,7 +111,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(322, 233);
+            this.label5.Location = new System.Drawing.Point(322, 224);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(75, 18);
             this.label5.TabIndex = 17;
@@ -154,7 +156,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(292, 400);
+            this.panel1.Size = new System.Drawing.Size(292, 452);
             this.panel1.TabIndex = 12;
             // 
             // pictureBox1
@@ -201,11 +203,36 @@
             this.label6.TabIndex = 11;
             this.label6.Text = "Login To Account";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Mongolian Baiti", 10.2F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(319, 289);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 18);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "Status";
+            // 
+            // Signup_Status
+            // 
+            this.Signup_Status.FormattingEnabled = true;
+            this.Signup_Status.Items.AddRange(new object[] {
+            "Admin",
+            "Manager",
+            "Users"});
+            this.Signup_Status.Location = new System.Drawing.Point(319, 325);
+            this.Signup_Status.Name = "Signup_Status";
+            this.Signup_Status.Size = new System.Drawing.Size(232, 24);
+            this.Signup_Status.TabIndex = 22;
+            // 
             // RegisterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(575, 400);
+            this.ClientSize = new System.Drawing.Size(575, 452);
+            this.Controls.Add(this.Signup_Status);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.exit);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.signup_btn);
@@ -245,5 +272,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button signup_loginBtn;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox Signup_Status;
     }
 }

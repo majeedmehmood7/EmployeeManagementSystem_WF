@@ -43,13 +43,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.status = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.add_employee_position = new System.Windows.Forms.ComboBox();
             this.employee_picture = new System.Windows.Forms.PictureBox();
             this.label4 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.status = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.employee_picture)).BeginInit();
             this.panel1.SuspendLayout();
@@ -65,6 +65,7 @@
             this.add_employee_import_btn.TabIndex = 15;
             this.add_employee_import_btn.Text = "Insert ";
             this.add_employee_import_btn.UseVisualStyleBackColor = false;
+            this.add_employee_import_btn.Click += new System.EventHandler(this.add_employee_import_btn_Click);
             // 
             // add_employee_clear_btn
             // 
@@ -211,6 +212,26 @@
             this.panel2.Size = new System.Drawing.Size(904, 213);
             this.panel2.TabIndex = 3;
             // 
+            // status
+            // 
+            this.status.FormattingEnabled = true;
+            this.status.Items.AddRange(new object[] {
+            "Active",
+            "Inactive"});
+            this.status.Location = new System.Drawing.Point(492, 109);
+            this.status.Name = "status";
+            this.status.Size = new System.Drawing.Size(220, 24);
+            this.status.TabIndex = 18;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(370, 112);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(44, 16);
+            this.label3.TabIndex = 17;
+            this.label3.Text = "Status";
+            // 
             // add_employee_position
             // 
             this.add_employee_position.FormattingEnabled = true;
@@ -260,26 +281,6 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(860, 218);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // status
-            // 
-            this.status.FormattingEnabled = true;
-            this.status.Items.AddRange(new object[] {
-            "Active",
-            "Inactive"});
-            this.status.Location = new System.Drawing.Point(492, 109);
-            this.status.Name = "status";
-            this.status.Size = new System.Drawing.Size(220, 24);
-            this.status.TabIndex = 18;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(370, 112);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(44, 16);
-            this.label3.TabIndex = 17;
-            this.label3.Text = "Status";
             // 
             // Employee
             // 

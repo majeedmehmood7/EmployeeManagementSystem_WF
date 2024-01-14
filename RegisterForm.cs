@@ -43,7 +43,7 @@ namespace EmployeeManagementSystem
 
         private void signup_btn_Click(object sender, EventArgs e)
         {
-            if((signup_username.Text == "") || (Signup_showpassword.Text == ""))
+            if ((signup_username.Text == "") || (Signup_showpassword.Text == "" || Signup_Status.Text == "")  )
             {
                 MessageBox.Show("Please fill all the blank fields", "Error Message" ,MessageBoxButtons.OK,MessageBoxIcon.Error);
             }
@@ -59,30 +59,31 @@ namespace EmployeeManagementSystem
 
                         string setusername = "SELECT COUNT(id)s FROM users WHERE username = @user";
 
-                        using(SqlCommand checkUser = new SqlCommand(setusername , connect))
+                        using (SqlCommand checkUser = new SqlCommand(setusername, connect))
                         {
-                            checkUser.Parameters.AddWithValue("@user" , signup_username.Text.Trim());
+                            checkUser.Parameters.AddWithValue("@user", signup_username.Text.Trim());
                             int count = (int)checkUser.ExecuteScalar();
 
-                            if(count >=1)
+                            if (count >= 1)
                             {
                                 MessageBox.Show(signup_username.Text.Trim() + "Is Already Taken"
-                                    ,"Error Message " , MessageBoxButtons.OK,MessageBoxIcon.Error );
+                                    , "Error Message ", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                                
+
 
                             }
                             else
                             {
                                 DateTime today = DateTime.Today;
                                 string insertDate = "INSERT INTO users" +
-                                    "(username,password,date_register) " +
-                                    "VALUES(@username , @password , @date_register)";
+                                    "(username,password,date_register,status) " +
+                                    "VALUES(@username , @password , @date_register,@status)";
 
                                 using (SqlCommand cmd = new SqlCommand(insertDate, connect))
                                 {
                                     cmd.Parameters.AddWithValue("@username", signup_username.Text.Trim());
                                     cmd.Parameters.AddWithValue("@password", signup_password.Text.Trim());
+                                    cmd.Parameters.AddWithValue("@status", Signup_Status.Text.Trim());
                                     cmd.Parameters.AddWithValue("@date_register", today);
 
                                     cmd.ExecuteNonQuery();
@@ -97,13 +98,15 @@ namespace EmployeeManagementSystem
                             }
 
                         }
-                        }
+                    }
 
-                       
-                    catch(Exception ex)
+
+
+
+                    catch (Exception ex)
                     {
                         MessageBox.Show("Error" + ex,
-                         "Error Message"   , MessageBoxButtons.OK, MessageBoxIcon.Error);
+                         "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     finally
                     {
