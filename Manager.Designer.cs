@@ -40,13 +40,16 @@
             this.label4 = new System.Windows.Forms.Label();
             this.manager_name = new System.Windows.Forms.TextBox();
             this.manager_gender = new System.Windows.Forms.ComboBox();
+            this.imagebox = new System.Windows.Forms.PictureBox();
+            this.insert_image = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imagebox)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(43, 363);
+            this.label1.Location = new System.Drawing.Point(33, 340);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(77, 16);
             this.label1.TabIndex = 0;
@@ -54,7 +57,7 @@
             // 
             // manager_id
             // 
-            this.manager_id.Location = new System.Drawing.Point(149, 357);
+            this.manager_id.Location = new System.Drawing.Point(175, 334);
             this.manager_id.Name = "manager_id";
             this.manager_id.Size = new System.Drawing.Size(215, 22);
             this.manager_id.TabIndex = 1;
@@ -62,7 +65,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(434, 357);
+            this.label2.Location = new System.Drawing.Point(33, 381);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(101, 16);
             this.label2.TabIndex = 2;
@@ -72,7 +75,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(43, 421);
+            this.label3.Location = new System.Drawing.Point(33, 430);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 16);
             this.label3.TabIndex = 4;
@@ -90,7 +93,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(46, 476);
+            this.button1.Location = new System.Drawing.Point(53, 496);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(119, 40);
             this.button1.TabIndex = 8;
@@ -100,7 +103,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(213, 476);
+            this.button2.Location = new System.Drawing.Point(220, 496);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(119, 40);
             this.button2.TabIndex = 9;
@@ -110,7 +113,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(368, 476);
+            this.button3.Location = new System.Drawing.Point(375, 496);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(119, 40);
             this.button3.TabIndex = 10;
@@ -119,7 +122,7 @@
             // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(521, 476);
+            this.button4.Location = new System.Drawing.Point(528, 496);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(119, 40);
             this.button4.TabIndex = 11;
@@ -138,7 +141,7 @@
             // 
             // manager_name
             // 
-            this.manager_name.Location = new System.Drawing.Point(580, 354);
+            this.manager_name.Location = new System.Drawing.Point(175, 385);
             this.manager_name.Name = "manager_name";
             this.manager_name.Size = new System.Drawing.Size(215, 22);
             this.manager_name.TabIndex = 3;
@@ -150,15 +153,36 @@
             "Male ",
             "Female",
             "Others "});
-            this.manager_gender.Location = new System.Drawing.Point(149, 412);
+            this.manager_gender.Location = new System.Drawing.Point(175, 430);
             this.manager_gender.Name = "manager_gender";
             this.manager_gender.Size = new System.Drawing.Size(215, 24);
             this.manager_gender.TabIndex = 13;
+            // 
+            // imagebox
+            // 
+            this.imagebox.Location = new System.Drawing.Point(481, 334);
+            this.imagebox.Name = "imagebox";
+            this.imagebox.Size = new System.Drawing.Size(142, 93);
+            this.imagebox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imagebox.TabIndex = 14;
+            this.imagebox.TabStop = false;
+            // 
+            // insert_image
+            // 
+            this.insert_image.Location = new System.Drawing.Point(481, 421);
+            this.insert_image.Name = "insert_image";
+            this.insert_image.Size = new System.Drawing.Size(142, 40);
+            this.insert_image.TabIndex = 15;
+            this.insert_image.Text = "Insert_Image";
+            this.insert_image.UseVisualStyleBackColor = true;
+            this.insert_image.Click += new System.EventHandler(this.insert_image_Click);
             // 
             // Manager
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.insert_image);
+            this.Controls.Add(this.imagebox);
             this.Controls.Add(this.manager_gender);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.button4);
@@ -174,6 +198,7 @@
             this.Name = "Manager";
             this.Size = new System.Drawing.Size(900, 560);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imagebox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -193,5 +218,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox manager_name;
         private System.Windows.Forms.ComboBox manager_gender;
+        private System.Windows.Forms.PictureBox imagebox;
+        private System.Windows.Forms.Button insert_image;
     }
 }
