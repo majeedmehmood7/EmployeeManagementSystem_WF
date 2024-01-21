@@ -48,7 +48,7 @@ namespace EmployeeManagementSystem
         {
             dashboard1.Visible = false;
             employee1.Visible = true;
-            salary1.Visible = false;
+            addUser1.Visible = false;
             manager1.Visible = false;
 
         }
@@ -57,7 +57,7 @@ namespace EmployeeManagementSystem
         {
             dashboard1.Visible = false;
             employee1.Visible = false;
-            salary1.Visible = true;
+            addUser1.Visible = true;
             manager1.Visible = false;
         }
 
@@ -70,7 +70,7 @@ namespace EmployeeManagementSystem
         {
             dashboard1.Visible = true;
             employee1.Visible = false;
-            salary1.Visible = false;
+            addUser1.Visible = false;
             manager1.Visible = false;
         }
 
@@ -83,8 +83,13 @@ namespace EmployeeManagementSystem
         {
             dashboard1.Visible = false;
             employee1.Visible = false;
-            salary1.Visible = false;
+            addUser1.Visible = false;
             manager1.Visible = true;
+        }
+
+        private void dashboard1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

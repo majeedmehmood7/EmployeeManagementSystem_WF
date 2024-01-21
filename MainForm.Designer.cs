@@ -42,10 +42,10 @@
             this.greent_user = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.employee1 = new EmployeeManagementSystem.Employee();
-            this.salary1 = new EmployeeManagementSystem.Salary();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.bindingSource2 = new System.Windows.Forms.BindingSource(this.components);
+            this.addUser1 = new EmployeeManagementSystem.AddUser();
+            this.employee1 = new EmployeeManagementSystem.Employee();
             this.manager1 = new EmployeeManagementSystem.Manager();
             this.dashboard1 = new EmployeeManagementSystem.Dashboard();
             this.panel1.SuspendLayout();
@@ -152,7 +152,7 @@
             this.Salary_btn.Name = "Salary_btn";
             this.Salary_btn.Size = new System.Drawing.Size(191, 51);
             this.Salary_btn.TabIndex = 5;
-            this.Salary_btn.Text = "Salary";
+            this.Salary_btn.Text = "Add Users";
             this.Salary_btn.UseVisualStyleBackColor = true;
             this.Salary_btn.Click += new System.EventHandler(this.Salary_btn_Click);
             // 
@@ -209,37 +209,37 @@
             this.panel3.Controls.Add(this.dashboard1);
             this.panel3.Controls.Add(this.manager1);
             this.panel3.Controls.Add(this.employee1);
-            this.panel3.Controls.Add(this.salary1);
+            this.panel3.Controls.Add(this.addUser1);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(217, 43);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(883, 557);
             this.panel3.TabIndex = 2;
             // 
+            // addUser1
+            // 
+            this.addUser1.Location = new System.Drawing.Point(0, 0);
+            this.addUser1.Name = "addUser1";
+            this.addUser1.Size = new System.Drawing.Size(883, 557);
+            this.addUser1.TabIndex = 0;
+            // 
             // employee1
             // 
-            this.employee1.Location = new System.Drawing.Point(0, -2);
+            this.employee1.Location = new System.Drawing.Point(0, 0);
             this.employee1.Name = "employee1";
-            this.employee1.Size = new System.Drawing.Size(900, 556);
+            this.employee1.Size = new System.Drawing.Size(950, 600);
             this.employee1.TabIndex = 1;
-            // 
-            // salary1
-            // 
-            this.salary1.Location = new System.Drawing.Point(0, -2);
-            this.salary1.Name = "salary1";
-            this.salary1.Size = new System.Drawing.Size(900, 556);
-            this.salary1.TabIndex = 0;
             // 
             // manager1
             // 
-            this.manager1.Location = new System.Drawing.Point(0, 0);
+            this.manager1.Location = new System.Drawing.Point(0, -1);
             this.manager1.Name = "manager1";
             this.manager1.Size = new System.Drawing.Size(900, 560);
             this.manager1.TabIndex = 2;
             // 
             // dashboard1
             // 
-            this.dashboard1.Location = new System.Drawing.Point(0, 0);
+            this.dashboard1.Location = new System.Drawing.Point(0, -1);
             this.dashboard1.Name = "dashboard1";
             this.dashboard1.Size = new System.Drawing.Size(900, 556);
             this.dashboard1.TabIndex = 3;
@@ -284,11 +284,11 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.BindingSource bindingSource1;
         private System.Windows.Forms.BindingSource bindingSource2;
-        private Employee employee1;
-        private Salary salary1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button Add_Manager;
         private Dashboard dashboard1;
         private Manager manager1;
+        private Employee employee1;
+        private AddUser addUser1;
     }
 }

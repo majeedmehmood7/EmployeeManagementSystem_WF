@@ -48,7 +48,7 @@ namespace EmployeeManagementSystem
                || add_employee_number.Text == ""
                || add_employee_position.Text == ""
                || status.Text == ""
-               || employee_picture.Image == null
+               //|| employee_picture.Image == null
                 ) 
             {
 
@@ -79,19 +79,19 @@ namespace EmployeeManagementSystem
                                 DateTime today = DateTime.Today;
                                 string insertData = "INSERT INTO employees" +
                                     "(employee_id, full_name, gender, contact_number" +
-                                    ", position, image, salary, insert_data, status)" +
+                                    ", position, salary, insert_data, status)" +
                                     "VALUES(@employeeID, @fullname, @gender, @contactnumber" +
-                                    ", @position, @image, @insertdate, @status)";
+                                    ", @position, @insertdate, @status)";
 
-                                string imagePath = Path.Combine(@"D:\EMS C#\EmployeeManagementSystem\Directory\", add_employee_id.Text.Trim() + ".jpg");
-                                string directoryPath = Path.GetDirectoryName(imagePath);
+                                //string imagePath = Path.Combine(@"D:\EMS C#\EmployeeManagementSystem\Directory\", add_employee_id.Text.Trim() + ".jpg");
+                                //string directoryPath = Path.GetDirectoryName(imagePath);
 
-                                if (!Directory.Exists(directoryPath))
-                                {
-                                    Directory.CreateDirectory(directoryPath);
-                                }
+                                //if (!Directory.Exists(directoryPath))
+                                //{
+                                //    Directory.CreateDirectory(directoryPath);
+                                //}
 
-                                File.Copy(employee_picture.ImageLocation, imagePath, true);
+                                //File.Copy(employee_picture.ImageLocation, imagePath, true);
 
                                 using (SqlCommand cmd = new SqlCommand(insertData, connect))
                                 {
@@ -100,7 +100,7 @@ namespace EmployeeManagementSystem
                                     cmd.Parameters.AddWithValue("@gender", add_employee_gender.Text.Trim());
                                     cmd.Parameters.AddWithValue("@contactnumber", add_employee_number.Text.Trim());
                                     cmd.Parameters.AddWithValue("@position", add_employee_position.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@image", imagePath);
+                                    //cmd.Parameters.AddWithValue("@image", imagePath);
                                     cmd.Parameters.AddWithValue("@insertdate", today);
                                     cmd.Parameters.AddWithValue("@status", status.Text.Trim());
 

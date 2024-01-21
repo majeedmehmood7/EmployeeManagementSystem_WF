@@ -113,6 +113,16 @@ namespace EmployeeManagementSystem.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _912267_removebg_preview1 {
+            get {
+                object obj = ResourceManager.GetObject("912267-removebg-preview1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap download__5__removebg_preview {
             get {
                 object obj = ResourceManager.GetObject("download__5_-removebg-preview", resourceCulture);
