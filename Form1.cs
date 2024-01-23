@@ -118,6 +118,10 @@ namespace EmployeeManagementSystem
                                 MainForm mainform = new MainForm();
                                 mainform.Show();
                                 this.Hide();
+
+                                //Dashboard2 d2 = new Dashboard2();
+                                //d2.Show();
+                                //this.Hide();
                             }
                             else
                             {

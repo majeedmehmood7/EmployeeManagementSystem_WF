@@ -69,6 +69,14 @@ namespace EmployeeManagementSystem
                 
 
                         cmd.ExecuteNonQuery();
+
+                        DataTable dt = new DataTable();
+                using (SqlDataAdapter adapter = new SqlDataAdapter("Select * from manager", connect))
+                {
+                   adapter.Fill(dt);
+                }
+                dataGridView1.DataSource = dt;
+
                 connect.Close();
                 MessageBox.Show("Data Saved Successfully",
                                         "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);

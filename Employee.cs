@@ -48,85 +48,117 @@ namespace EmployeeManagementSystem
                || add_employee_number.Text == ""
                || add_employee_position.Text == ""
                || status.Text == ""
-               //|| employee_picture.Image == null
-                ) 
+                //|| employee_picture.Image == null
+                )
             {
 
-            MessageBox.Show("Please fill all the blank fields " 
-                ,"Error Message" , MessageBoxButtons.OK, MessageBoxIcon.Error );
+                MessageBox.Show("Please fill all the blank fields "
+                    , "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                if (connect.State == ConnectionState.Open)
+
+                connect.Open();
+                SqlCommand cmd = new SqlCommand("INSERT INTO employees (employee_id, full_name, gender ,contact_number,position,status) VALUES (@employee_id, @full_name, @gender ,@contact_number,@position,@status)", connect);
+
+
+                cmd.Parameters.AddWithValue("@employee_id", add_employee_id.Text.Trim());
+                cmd.Parameters.AddWithValue("@full_name", add_employee_name.Text.Trim());
+                cmd.Parameters.AddWithValue("@gender", add_employee_gender.Text.Trim());
+                cmd.Parameters.AddWithValue("@contact_number", add_employee_number.Text.Trim());
+                cmd.Parameters.AddWithValue("@position", add_employee_position.Text.Trim());
+                //cmd.Parameters.AddWithValue("@image", imagePath);
+                //cmd.Parameters.AddWithValue("@insertdate", today);
+                cmd.Parameters.AddWithValue("@status", status.Text.Trim());
+
+                cmd.ExecuteNonQuery();
+
+                DataTable dataTable = new DataTable();
+                using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM employees", connect))
                 {
-                    try
-                    {
-                        connect.Open();
-                        string checkEmID = "SELECT COUNT(*) FROM employees WHERE employee_id = @emID AND delete_date IS NULL";
-                        using (SqlCommand checkEM = new SqlCommand(checkEmID, connect))
-                        {
-                            checkEM.Parameters.AddWithValue("@emID", add_employee_id.Text.Trim());
-                            int count = (int)checkEM.ExecuteScalar();
-
-                            if (count >= 1)  // Check for count greater than 0, not 1
-                            {
-                                MessageBox.Show(add_employee_id.Text.Trim() + " is Already Taken",
-                                    "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                // Stop execution if the ID is already taken
-                            }
-                            else
-                            {
-                                DateTime today = DateTime.Today;
-                                string insertData = "INSERT INTO employees" +
-                                    "(employee_id, full_name, gender, contact_number" +
-                                    ", position, salary, insert_data, status)" +
-                                    "VALUES(@employeeID, @fullname, @gender, @contactnumber" +
-                                    ", @position, @insertdate, @status)";
-
-                                //string imagePath = Path.Combine(@"D:\EMS C#\EmployeeManagementSystem\Directory\", add_employee_id.Text.Trim() + ".jpg");
-                                //string directoryPath = Path.GetDirectoryName(imagePath);
-
-                                //if (!Directory.Exists(directoryPath))
-                                //{
-                                //    Directory.CreateDirectory(directoryPath);
-                                //}
-
-                                //File.Copy(employee_picture.ImageLocation, imagePath, true);
-
-                                using (SqlCommand cmd = new SqlCommand(insertData, connect))
-                                {
-                                    cmd.Parameters.AddWithValue("@employeeID", add_employee_id.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@fullname", add_employee_name.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@gender", add_employee_gender.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@contactnumber", add_employee_number.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@position", add_employee_position.Text.Trim());
-                                    //cmd.Parameters.AddWithValue("@image", imagePath);
-                                    cmd.Parameters.AddWithValue("@insertdate", today);
-                                    cmd.Parameters.AddWithValue("@status", status.Text.Trim());
-
-                                    cmd.ExecuteNonQuery();
-
-                                    displayEmployeeData();
-
-                                    MessageBox.Show("Data Added Successfully",
-                                        "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                }
-                            }
-                        }
-                    }
-
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show("Error: " + ex.Message,
-                            "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    finally
-                    {
-                        connect.Close();
-                    }
+                    adapter.Fill(dataTable);
                 }
-            }
 
+                dataGridView1.DataSource = dataTable;
+
+                connect.Close();
+                MessageBox.Show("Data Saved Successfully",
+                                        "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                
+
+                //if (connect.State == ConnectionState.Open)
+                //{
+                //    try
+                //    {
+                //        connect.Open();
+                //        string checkEmID = "SELECT COUNT(*) FROM employees WHERE employee_id = @emID AND delete_date IS NULL";
+                //        using (SqlCommand checkEM = new SqlCommand(checkEmID, connect))
+                //        {
+                //            checkEM.Parameters.AddWithValue("@emID", add_employee_id.Text.Trim());
+                //            int count = (int)checkEM.ExecuteScalar();
+
+                //            if (count >= 1)  // Check for count greater than 0, not 1
+                //            {
+                //                MessageBox.Show(add_employee_id.Text.Trim() + " is Already Taken",
+                //                    "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //                // Stop execution if the ID is already taken
+                //            }
+                //            else
+                //            {
+                //                DateTime today = DateTime.Today;
+                //                string insertData = "INSERT INTO employees" +
+                //                    "(employee_id, full_name, gender, contact_number" +
+                //                    ", position, salary, insert_data, status)" +
+                //                    "VALUES(@employeeID, @fullname, @gender, @contactnumber" +
+                //                    ", @position, @insertdate, @status)";
+
+                //string imagePath = Path.Combine(@"D:\EMS C#\EmployeeManagementSystem\Directory\", add_employee_id.Text.Trim() + ".jpg");
+                //string directoryPath = Path.GetDirectoryName(imagePath);
+
+                //if (!Directory.Exists(directoryPath))
+                //{
+                //    Directory.CreateDirectory(directoryPath);
+                //}
+
+                //File.Copy(employee_picture.ImageLocation, imagePath, true);
+
+                //                    using (SqlCommand cmd = new SqlCommand(insertData, connect))
+                //                    {
+                //                        cmd.Parameters.AddWithValue("@employeeID", add_employee_id.Text.Trim());
+                //                        cmd.Parameters.AddWithValue("@fullname", add_employee_name.Text.Trim());
+                //                        cmd.Parameters.AddWithValue("@gender", add_employee_gender.Text.Trim());
+                //                        cmd.Parameters.AddWithValue("@contactnumber", add_employee_number.Text.Trim());
+                //                        cmd.Parameters.AddWithValue("@position", add_employee_position.Text.Trim());
+                //                        //cmd.Parameters.AddWithValue("@image", imagePath);
+                //                        cmd.Parameters.AddWithValue("@insertdate", today);
+                //                        cmd.Parameters.AddWithValue("@status", status.Text.Trim());
+
+                //                        cmd.ExecuteNonQuery();
+
+                //                        displayEmployeeData();
+
+                //                        MessageBox.Show("Data Added Successfully",
+                //                            "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                //                    }
+                //                }
+                //            }
+                //        }
+
+                //        catch (Exception ex)
+                //        {
+                //            MessageBox.Show("Error: " + ex.Message,
+                //                "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //        }
+                //        finally
+                //        {
+                //            connect.Close();
+                //        }
+                //    }
+                //}
+
+            }
         }
 
         private void add_employee_import_btn_Click(object sender, EventArgs e)
@@ -135,11 +167,12 @@ namespace EmployeeManagementSystem
 
                 OpenFileDialog dialog = new OpenFileDialog();
                 dialog.Filter = "Image Files (*.jpg; *.png) |*jpg;*png";
-                string imagepath = "";
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
-                    imagepath = dialog.FileName;
-                    employee_picture.ImageLocation = imagepath;
+                    //imagepath = dialog.FileName;
+                    //    employee_picture.ImageLocation = imagepath;
+                    employee_picture.Image = new Bitmap(dialog.FileName);
+
                 }
 
             }

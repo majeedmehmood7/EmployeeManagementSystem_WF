@@ -27,7 +27,7 @@ namespace EmployeeManagementSystem
                 button4.Visible = true;
             }
 
-            if (Myconnection.type == "U")
+            else if (Myconnection.type == "U")
             {
                 button1.Visible = true;
                 button2.Visible = false;
